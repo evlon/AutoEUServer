@@ -27,8 +27,8 @@ TRUECAPTCHA_USERID = '改为你的TrueCaptcha UserID'
 TRUECAPTCHA_APIKEY = '改为你的TrueCaptcha APIKEY'
 
 # Mailparser 配置
-MAILPARSER_DOWNLOAD_URL_ID = '改为你的Mailparser下载URL的最后几位' # 填写Mailparser的下载URL_ID
-MAILPARSER_DOWNLOAD_BASE_URL = "https://files.mailparser.io/d/" # 无需更改除非你要反代
+MAILPARSER_DOWNLOAD_URL = '改为你的Mailparser下载URL' # 填写 获取邮件 PIN 的完整URL  ,使用方法见： https://github.com/evlon/email-authcode-api
+ 
 
 # Telegram Bot 推送配置
 TG_BOT_TOKEN = "改为你的Telegram机器人Token"
