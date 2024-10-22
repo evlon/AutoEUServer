@@ -25,8 +25,8 @@ TRUECAPTCHA_USERID = os.getenv('TRUECAPTCHA_USERID')
 TRUECAPTCHA_APIKEY = os.getenv('TRUECAPTCHA_APIKEY')
 
 # Mailparser 配置
-MAILPARSER_DOWNLOAD_URL_ID = os.getenv('MAILPARSER_DOWNLOAD_URL_ID')
-MAILPARSER_DOWNLOAD_BASE_URL = "https://files.mailparser.io/d/"
+MAILPARSER_DOWNLOAD_URL = os.getenv('MAILPARSER_DOWNLOAD_URL')
+#MAILPARSER_DOWNLOAD_BASE_URL =  os.getenv('MAILPARSER_DOWNLOAD_BASE_URL') #"https://files.mailparser.io/d/"
 
 # Telegram Bot 推送配置
 TG_BOT_TOKEN = os.getenv('TG_BOT_TOKEN')
@@ -40,7 +40,7 @@ PROXIES = {"http": "http://127.0.0.1:10808", "https": "http://127.0.0.1:10808"}
 LOGIN_MAX_RETRY_COUNT = 5
 
 # 接收 PIN 的等待时间，单位为秒
-WAITING_TIME_OF_PIN = 15
+WAITING_TIME_OF_PIN = 60
 
 # 是否检查验证码解决器的使用情况
 CHECK_CAPTCHA_SOLVER_USAGE = True
@@ -66,7 +66,7 @@ def log(info: str):
         "API 使用次数": "📊",
         "验证码是": "🔢",
         "登录尝试": "🔑",
-        "[MailParser]": "📧",
+        "[arser]": "📧",
         "[Captcha Solver]": "🧩",
         "[AutoEUServerless]": "🌐",
     }
@@ -182,9 +182,9 @@ def get_captcha_solver_usage() -> dict:
 def get_pin_from_mailparser(url_id: str) -> str:
     # 从 Mailparser 获取 PIN# 
     response = requests.get(
-        f"{MAILPARSER_DOWNLOAD_BASE_URL}{url_id}",
+        f"{MAILPARSER_DOWNLOAD_URL}",
     )
-    pin = response.json()[0]["pin"]
+    pin = response.text()
     return pin
 
 # 登录函数
